@@ -6,7 +6,6 @@ import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { EnvelopeOpenIcon } from "@heroicons/react/24/solid";
-import { fetchSocials } from "@/lib/fetchSocials";
 import { Social } from "@/typing";
 
 type Props = {};
