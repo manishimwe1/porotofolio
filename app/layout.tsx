@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 	description: "Manishimwe resume",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: {
 	children: React.ReactNode;

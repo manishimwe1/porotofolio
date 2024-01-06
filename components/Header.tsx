@@ -6,10 +6,14 @@ import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { EnvelopeOpenIcon } from "@heroicons/react/24/solid";
+import { fetchSocials } from "@/lib/fetchSocials";
+import { Social } from "@/typing";
 
 type Props = {};
 
-function Header({}: Props) {
+function Header({ social }: { social: Social[] }) {
+	// console.log(social);
+
 	const route = useRouter();
 	const [isopen, setisopen] = useState(false);
 	const handleClick = () => {
@@ -33,13 +37,14 @@ function Header({}: Props) {
 					duration: 1.5,
 				}}
 				className='flex items-center '>
-				{socialIcons.map((socialIcon) => (
+				{social.map((socialIcon) => (
 					<SocialIcon
-						key={socialIcon.url}
+						key={socialIcon._id}
 						url={socialIcon.url}
-						fgColor={socialIcon.fgColor}
-						bgColor={socialIcon.bgColor}
+						fgColor='gray'
+						bgColor='transparent'
 						className='w-10 h-10'
+						target='_blank'
 					/>
 				))}
 			</motion.div>

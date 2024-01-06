@@ -5,11 +5,15 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
+import { fetchSocials } from "@/lib/fetchSocials";
+import { Social } from "@/typing";
 
-export default function Home() {
+export default async function Home() {
+	const social: Social[] = await fetchSocials();
+
 	return (
 		<div className='h-screen snap-y snap-mandatory overflow-y-scroll z-20 overflow-x-hidden scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#00BFFF]/80 scrollbar-corner-gray-400/20'>
-			<Header />
+			<Header social={social} />
 
 			<section id='hero' className=' snap-center'>
 				<Hero />
