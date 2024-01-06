@@ -13,10 +13,7 @@ const query = groq`
 type Data = {
 	experiences: Experience;
 };
-export async function GET(
-	req: NextApiRequest,
-	res: NextApiResponse<Data>,
-) {
+export async function GET() {
 	const experiences: Experience =
 		await sanityClient.fetch(query);
 	return Response.json({ experiences });
