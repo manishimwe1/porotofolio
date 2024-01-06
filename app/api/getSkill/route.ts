@@ -1,4 +1,3 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { groq } from "next-sanity";
 
 import { sanityClient } from "../../../sanity";
@@ -10,10 +9,7 @@ const query = groq`
 type Data = {
 	skill: Skill;
 };
-export async function GET(
-	req: NextApiRequest,
-	res: NextApiResponse<Data>,
-) {
+export async function GET() {
 	const skill: Skill = await sanityClient.fetch(query);
 	return Response.json({ skill });
 }
