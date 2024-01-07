@@ -1,9 +1,13 @@
 "use client";
+import { urlFor } from "@/sanity";
+import { PageInfo } from "@/typing";
 import { motion } from "framer-motion";
 
-type Props = {};
+type Props = {
+	pageInfo: PageInfo;
+};
 
-const About = (props: Props) => {
+const About = ({ pageInfo }: Props) => {
 	return (
 		<motion.div
 			initial={{
@@ -31,7 +35,7 @@ const About = (props: Props) => {
 					duration: 1.5,
 				}}
 				viewport={{ once: true }}
-				src={"/image/man.png"}
+				src={urlFor(pageInfo.profilePic).url()}
 				alt='profile-pic'
 				className='bg-blue-400/10 rounded-full w-56 h-56 md:w-80 md:h-96  md:rounded-lg  object-cover mx-auto mt-24'
 			/>
@@ -44,18 +48,7 @@ const About = (props: Props) => {
 					background
 				</h4>
 				<p className='text-justify text-base text-slate-400'>
-					I am a passionate and skilled Full Stack
-					Developer specializing in Mobile and Web
-					development with a strong dedication to
-					quality and attention to detail. I am
-					improve my craft i stay uptaded with the
-					latest industry trends and best
-					practices by attending conferences,
-					taking online courses. and experimenting
-					with new technologies I excel in
-					designing and maintaining responsive web
-					application that offer a smooth user
-					exprience.
+					{pageInfo.backgroundInfomation}
 				</p>
 			</div>
 		</motion.div>

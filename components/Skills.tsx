@@ -1,17 +1,15 @@
-"use client";
 import React from "react";
 import Skill from "./Skill";
-import { motion } from "framer-motion";
+import { MotionDiv } from "./MotionDiv";
+import { Skill as typeSkill } from "@/typing";
+import { getSkills } from "@/lib/actions/fecthData";
 
 type Props = {};
 
-function Skills({}: Props) {
-	const arr = [
-		1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5,
-		6, 1, 2,
-	];
+async function Skills({}: Props) {
+	const skills: typeSkill[] = await getSkills();
 	return (
-		<motion.div
+		<MotionDiv
 			initial={{
 				opacity: 0,
 			}}
@@ -28,11 +26,11 @@ function Skills({}: Props) {
 				Hover over a skill for current profieciency
 			</h3>
 			<div className='absolute top-80 lg:top-56 grid grid-cols-4 gap-5 overflow-hidden'>
-				{arr.map((_, i) => (
-					<Skill key={i} />
+				{skills.map((skill) => (
+					<Skill key={skill._id} skill={skill} />
 				))}
 			</div>
-		</motion.div>
+		</MotionDiv>
 	);
 }
 

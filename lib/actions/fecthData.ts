@@ -18,8 +18,9 @@ export const getSocials = async () => {
 
 	const socials: Social[] = await sanityClient.fetch(
 		query,
-		tags,
+		{ cache: "no-store" },
 	);
+	// console.log("is it revalidating or not....");
 
 	return socials;
 };
@@ -31,23 +32,22 @@ export const getPageInfo = async () => {
 
 	const pageInfo: PageInfo = await sanityClient.fetch(
 		query,
+		{ cache: "no-store" },
 	);
 
-	if (pageInfo) {
-		// const Url = pageInfo.map((social) => social.url);
-		return console.log(pageInfo);
-	}
+	return pageInfo;
 };
 
 export const getProject = async () => {
 	const query = groq`
-    *[_type === "project"]{
+    *[_type == "project"]{
 		...,
 		technologies[]->
 	}
 `;
 	const project: Project[] = await sanityClient.fetch(
 		query,
+		{ cache: "no-store" },
 	);
 
 	return project;
@@ -60,18 +60,19 @@ export const getExperience = async () => {
 		technologies[]->
 	}
 `;
-	const experience: Experience = await sanityClient.fetch(
-		query,
-	);
+	const experience: Experience[] =
+		await sanityClient.fetch(query, {
+			cache: "no-store",
+		});
 
 	return experience;
 };
 
 export const getSkills = async () => {
 	const query = groq`
-    *[_type == "social"]
+    *[_type == "skill"]
 `;
-	const skills: Skill = await sanityClient.fetch(query);
+	const skills: Skill[] = await sanityClient.fetch(query);
 
 	return skills;
 };

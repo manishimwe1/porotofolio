@@ -11,7 +11,7 @@ import { Social } from "@/typing";
 type Props = {};
 
 function Header({ social }: { social: Social[] }) {
-	console.log(social);
+	// console.log(social);
 
 	const route = useRouter();
 	const [isopen, setisopen] = useState(false);

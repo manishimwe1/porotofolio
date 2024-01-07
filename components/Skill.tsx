@@ -1,14 +1,22 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
+import { Skill } from "@/typing";
+import { urlFor } from "@/sanity";
+import Image from "next/image";
 
-type Props = { directionLeft?: boolean };
+type Props = {
+	directionLeft?: boolean;
+	skill: Skill;
+};
 
-function Skill({ directionLeft }: Props) {
+function Skill({ directionLeft, skill }: Props) {
 	return (
 		<div className='group relative flex cursor-pointer'>
-			<motion.img
+			{/* <motion.img
 				initial={{
-					x: directionLeft ? -200 : 200,
+					x: 200,
 					opacity: 0,
 				}}
 				whileInView={{
@@ -17,10 +25,14 @@ function Skill({ directionLeft }: Props) {
 				}}
 				transition={{
 					duration: 1.5,
-				}}
-				viewport={{ once: true }}
-				src='/image/blade.png'
-				className='w-[58px] h-[58px] object-cover rounded-full border border-gray lg:w-[80px] lg:h-[80px] filter group-hover:grayscale transition-all duration-200 ease-in-out'
+				}} */}
+			<Image
+				width={10}
+				height={10}
+				alt='logoskills'
+				// viewport={{ once: true }}
+				src={urlFor(skill.image).url()}
+				className='w-[58px] h-[58px] object-center object-contain  bg-[#00BFFF]/50  rounded-full border border-gray lg:w-[80px] lg:h-[80px] filter group-hover:grayscale transition-all duration-200 ease-in-out'
 			/>
 			<div className='absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white w-[58px] h-[58px] lg:w-[80px] rounded-full lg:h-[80px]'>
 				<div className=' flex items-center justify-center h-full'>

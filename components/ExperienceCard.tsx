@@ -1,9 +1,15 @@
+"use client";
+
+import { urlFor } from "@/sanity";
+import { Experience } from "@/typing";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-type Props = {};
+type Props = {
+	experience: Experience;
+};
 
-function ExperienceCard({}: Props) {
+function ExperienceCard({ experience }: Props) {
 	return (
 		<article className='flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 opacity-40 hover:opacity-100 cursor-pointer transition-opacity duration-200 overflow-hidden'>
 			<motion.img
@@ -16,44 +22,56 @@ function ExperienceCard({}: Props) {
 				}}
 				whileInView={{ opacity: 1, y: 0 }}
 				viewport={{ once: true }}
-				src='/image/blade.png'
+				src={urlFor(experience.companyImage).url()}
 				alt='workExperinces'
-				className='w-20 h-20 rounded-full object-cover'
+				className='w-24 h-24 rounded-full bg-[#00BFFF]/50  object-contain object-center '
 			/>
 			<div className=''>
 				<h4 className='text-4xl font-light '>
-					CEO of papafam
+					{experience.jobTitle}
 				</h4>
 				<p className='font-bold text-2xl mt-1'>
-					PAPAFARM
+					{experience.company}
 				</p>
 				<div className='flex space-x-1 my-2'>
-					<Image
-						src={"/logo-purple.svg"}
-						alt='logo'
-						width={50}
-						height={50}
-						className='object-cover '
-					/>
-					<Image
-						src={"/logo.svg"}
-						alt='logo'
-						width={50}
-						height={50}
-						className='object-cover '
-					/>
+					{experience.technologies.map(
+						(technology) => (
+							<Image
+								key={technology._id}
+								src={urlFor(
+									technology.image,
+								).url()}
+								alt='logo'
+								width={30}
+								height={30}
+								className='object-contain '
+							/>
+						),
+					)}
 				</div>
 				<p className='uppercase py-3'>
-					Started work... | Ended...
+					{new Date(
+						experience.dateStarted,
+					).toDateString()}{" "}
+					|{" "}
+					{experience.isCurrentWorkingHere
+						? "Present"
+						: new Date(
+								experience.dateEnded,
+						  ).toDateString()}
 				</p>
 
 				<ul className='list-disc gap-3 ml-5 text-sm'>
-					<li>summary points</li>
-					<li>summary points</li>
-					<li>summary points</li>
-					<li>summary points</li>
-					<li>summary points</li>
-					<li>summary points</li>
+					{experience.points
+						? experience.points.map(
+								(point, i) => (
+									<li
+										key={`${point}${i}`}>
+										{point}
+									</li>
+								),
+						  )
+						: "No Data Points"}
 				</ul>
 			</div>
 		</article>
