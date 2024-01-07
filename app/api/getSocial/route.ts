@@ -6,10 +6,12 @@ import { Social } from "@/typing";
 const query = groq`
    *[_type == "social"]
 `;
-type Data = {
-	social: Social;
-};
+const tags = ["/"];
+
 export async function GET() {
-	const social: Social = await sanityClient.fetch(query);
+	const social: Social = await sanityClient.fetch(query, {
+		cache: "force-cache",
+		next: { tags },
+	});
 	return Response.json({ social });
 }
