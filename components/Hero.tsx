@@ -31,9 +31,9 @@ function Hero({ pageInfo }: Props) {
 				alt='profile-pic'
 				width={200}
 				height={200}
-				className='bg-blue-400/10 rounded-full object-cover mx-auto absolute top-[42.8%]'
+				className='bg-blue-400/10 rounded-full object-cover mx-auto absolute top-[41%]'
 			/>
-			<div className=' absolute bottom-20 md:bottom-10 z-10'>
+			<div className=' absolute bottom-0 bg-black/40 p-2 rounded-2xl md:bottom-1 shadow-md shadow-black/50 z-10'>
 				<h2 className='text-sm text-gray-400/40 whitespace-nowrap uppercase px-10 font-semibold tracking-[10px] md:tarcking-[15px]'>
 					{pageInfo.role}
 				</h2>

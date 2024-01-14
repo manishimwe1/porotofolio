@@ -20,7 +20,7 @@ const About = ({ pageInfo }: Props) => {
 				duration: 1.5,
 			}}
 			viewport={{ once: true }}
-			className='flex max-w-7xl flex-col md:gap-4 relative h-screen text-center mx-auto items-center px-10 justify-evenly md:text-left md:flex-row'>
+			className='flex max-w-6xl flex-col md:gap-4 relative h-screen text-center mx-auto items-center px-10 justify-evenly md:text-left md:flex-row'>
 			<h3 className='title'>About</h3>
 			<motion.img
 				initial={{

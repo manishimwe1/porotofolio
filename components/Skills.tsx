@@ -25,7 +25,7 @@ async function Skills({}: Props) {
 			<h3 className='absolute top-44 uppercase tracking-[3px] text-gray text-xs'>
 				Hover over a skill for current profieciency
 			</h3>
-			<div className='absolute top-80 lg:top-56 grid grid-cols-4 gap-5 overflow-hidden'>
+			<div className='absolute top-80 lg:top-72 grid grid-cols-4 gap-5 overflow-hidden'>
 				{skills.map((skill) => (
 					<Skill key={skill._id} skill={skill} />
 				))}
