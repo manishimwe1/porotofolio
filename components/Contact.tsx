@@ -1,12 +1,12 @@
 "use client";
 
-import {
-	PhoneIcon,
-	MapIcon,
-	EnvelopeIcon,
-} from "@heroicons/react/24/solid";
-import { useForm, SubmitHandler } from "react-hook-form";
 import emailjs from "@emailjs/browser";
+import {
+	EnvelopeIcon,
+	MapIcon,
+	PhoneIcon,
+} from "@heroicons/react/24/solid";
+import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 type Inputs = {
@@ -21,14 +21,15 @@ const Contact = () => {
 		register,
 		handleSubmit,
 		watch,
+		reset,
 		formState: { errors },
 	} = useForm<Inputs>();
 
 	const onSubmit: SubmitHandler<Inputs> = async (
 		formData,
+		e,
 	) => {
-		//Todo:emplement Email Js
-		// console.log("Starting to send email ...");
+		// console.log(e);
 		toast.loading("Starting to send email ...", {
 			duration: 2000,
 		});
@@ -44,6 +45,7 @@ const Contact = () => {
 			response.status,
 			response.text,
 		);
+		e?.target.reset();
 		toast.success("SUCCESS");
 	};
 	return (

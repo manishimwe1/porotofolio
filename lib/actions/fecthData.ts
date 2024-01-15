@@ -14,7 +14,6 @@ export const getSocials = async () => {
 	const query = groq`
     *[_type == "social"]
 `;
-	const tags = ["social"];
 
 	const socials: Social[] = await sanityClient.fetch(
 		query,
@@ -79,3 +78,5 @@ export const getSkills = async () => {
 
 	return skills;
 };
+
+// export const revalidate = 10
