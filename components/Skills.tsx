@@ -8,7 +8,7 @@ import { fetchSkills } from "@/lib/fetchSkills";
 type Props = {};
 
 async function Skills({}: Props) {
-	const skills: typeSkill[] = await fetchSkills();
+	const skills: typeSkill[] = await getSkills();
 	return (
 		<MotionDiv
 			initial={{

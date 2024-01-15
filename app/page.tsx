@@ -16,8 +16,8 @@ import { PageInfo, Social } from "@/typing";
 import Image from "next/image";
 
 export default async function Home() {
-	const social: Social[] = await fetchSocials();
-	const pageInfo: PageInfo = await fetchPageInfo();
+	const social: Social[] = await getSocials();
+	const pageInfo: PageInfo = await getPageInfo();
 
 	return (
 		<div className='h-screen relative snap-y snap-mandatory overflow-y-scroll z-20 overflow-x-hidden scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#00BFFF]/80 scrollbar-corner-gray-400/20'>

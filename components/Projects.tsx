@@ -8,7 +8,7 @@ import { fetchProject } from "@/lib/fetchProject";
 type Props = {};
 
 async function Projects({}: Props) {
-	const projects: Project[] = await fetchProject();
+	const projects: Project[] = await getProject();
 
 	return (
 		<div className='h-screen relative overflow-hidden flex  flex-col text-left md:flex-row  justify-evenly mx-auto items-center z-0'>

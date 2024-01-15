@@ -7,8 +7,7 @@ import { fetchExperience } from "@/lib/fetchExperience";
 type Props = {};
 
 async function Experience({}: Props) {
-	const experiences: Experience[] =
-		await fetchExperience();
+	const experiences: Experience[] = await getExperience();
 	return (
 		<MotionDiv
 			initial={{
