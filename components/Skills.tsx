@@ -3,11 +3,12 @@ import Skill from "./Skill";
 import { MotionDiv } from "./MotionDiv";
 import { Skill as typeSkill } from "@/typing";
 import { getSkills } from "@/lib/actions/fecthData";
+import { fetchSkills } from "@/lib/fetchSkills";
 
 type Props = {};
 
 async function Skills({}: Props) {
-	const skills: typeSkill[] = await getSkills();
+	const skills: typeSkill[] = await fetchSkills();
 	return (
 		<MotionDiv
 			initial={{

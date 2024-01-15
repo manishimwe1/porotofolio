@@ -15,6 +15,7 @@ type Data = {
 export async function GET() {
 	const project: Project = await sanityClient.fetch(
 		query,
+		{ next: { revalidate: 10 } },
 	);
 	return Response.json({ project });
 }

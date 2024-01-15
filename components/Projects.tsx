@@ -3,11 +3,12 @@ import { MotionImg } from "./MotionImg";
 import { Project } from "@/typing";
 import { urlFor } from "@/sanity";
 import Image from "next/image";
+import { fetchProject } from "@/lib/fetchProject";
 
 type Props = {};
 
 async function Projects({}: Props) {
-	const projects: Project[] = await getProject();
+	const projects: Project[] = await fetchProject();
 
 	return (
 		<div className='h-screen relative overflow-hidden flex  flex-col text-left md:flex-row  justify-evenly mx-auto items-center z-0'>

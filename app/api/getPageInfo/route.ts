@@ -12,6 +12,7 @@ type Data = {
 export async function GET() {
 	const pageInfo: PageInfo = await sanityClient.fetch(
 		query,
+		{ next: { revalidate: 10 } },
 	);
 	return Response.json({ pageInfo });
 }

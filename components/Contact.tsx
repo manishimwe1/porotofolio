@@ -6,6 +6,8 @@ import {
 	EnvelopeIcon,
 } from "@heroicons/react/24/solid";
 import { useForm, SubmitHandler } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
 
 type Inputs = {
 	name: string;
@@ -22,9 +24,27 @@ const Contact = () => {
 		formState: { errors },
 	} = useForm<Inputs>();
 
-	const onSubmit: SubmitHandler<Inputs> = (formData) => {
+	const onSubmit: SubmitHandler<Inputs> = async (
+		formData,
+	) => {
 		//Todo:emplement Email Js
-		console.log(formData);
+		// console.log("Starting to send email ...");
+		toast.loading("Starting to send email ...", {
+			duration: 2000,
+		});
+		const response = await emailjs.send(
+			"service_ab9nhn9",
+			"template_etofumq",
+
+			formData,
+			"3nolMgFHifk0xNIde",
+		);
+		console.log(
+			"SUCCESS",
+			response.status,
+			response.text,
+		);
+		toast.success("SUCCESS");
 	};
 	return (
 		<div className='h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px:10 justify-evenly mx-auto items-center'>

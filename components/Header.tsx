@@ -64,17 +64,12 @@ function Header({ social }: { social: Social[] }) {
 				}}
 				onClick={handleClick}
 				className='flex items-center gap-4 cursor-pointer'>
-				{!isopen ? (
-					<SocialIcon
-						fgColor='gray'
-						bgColor='transparent'
-						network='email'
-						className='w-10 h-10'
-					/>
-				) : (
-					<EnvelopeOpenIcon className='w-7 h-7 text-gray-400/50 mt-1' />
-				)}
-				{/* Todoo:when you click open your icons */}
+				<SocialIcon
+					fgColor='gray'
+					bgColor='transparent'
+					network='email'
+					className='w-10 h-10'
+				/>
 				<p className='capitalize  hidden md:inline-flex text-gray-400/50 font-semibold text-lg'>
 					get in touch
 				</p>

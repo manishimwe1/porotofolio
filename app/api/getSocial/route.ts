@@ -10,11 +10,7 @@ const tags = ["/"];
 
 export async function GET() {
 	const social: Social = await sanityClient.fetch(query, {
-		cache:
-			process.env.NODE_ENV === "development"
-				? "no-cache"
-				: "force-cache",
-		next: { tags },
+		next: { revalidate: 10 },
 	});
 	return Response.json({ social });
 }

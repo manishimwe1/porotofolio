@@ -2,11 +2,13 @@ import { Experience } from "@/typing";
 import ExperienceCard from "./ExperienceCard";
 import { MotionDiv } from "./MotionDiv";
 import { getExperience } from "@/lib/actions/fecthData";
+import { fetchExperience } from "@/lib/fetchExperience";
 
 type Props = {};
 
 async function Experience({}: Props) {
-	const experiences: Experience[] = await getExperience();
+	const experiences: Experience[] =
+		await fetchExperience();
 	return (
 		<MotionDiv
 			initial={{
